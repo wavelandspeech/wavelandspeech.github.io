@@ -64,259 +64,576 @@ on our internal 48kHz singing voice datasets shows that XiaoiceSing2 significant
   <h3 id="multi_band_discriminator">Multi-band discriminator</h3>
     <img src="../images/xiaoicesing2/multi_band_discriminator.png" width="100%" /> -->
 <h2 id="audio-samples">Audio Samples</h2>
-<p>All of the spectrogram use same acoustic model.</p>
+<p>All of the spectrogram use same vocoder .</p>
 <h3 id="audio-quality">Audio Quality</h3>
-<p><em>让你在回味，自不醉人人自醉，因为回忆</em></p>
+<p><em>明天你好，含着泪微笑，越美好</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7200000189_139.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7200000189_139_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7200000189_139_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7200000189_139_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000150_169.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000150_169_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-<p><em>我好无聊</em></p>
+<p><em>滴滴答，我早茶月光洒在你头发，平行的画滴滴</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220000892_64.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220000892_64_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220000892_64_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220000892_64_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000180_63.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000180_63_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>怀念从前，是因为太留恋</em></p>
-
+<p><em>曾经将征服全世界，到最后回首才发现</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7200000209_250.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7200000209_250_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7200000209_250_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7200000209_250_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000210_124.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000210_124_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000210_124_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000210_124_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000210_124_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000210_124_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-<p><em>印象假设，然后当真了</em></p>
+<p><em>那天晚上满天星星，平行时空下的约定</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220000904_41.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220000904_41_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220000904_41_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220000904_41_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000210_200.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000210_200_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000210_200_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000210_200_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000210_200_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000210_200_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-<p><em>我还在寻找着我的小森林</em></p>
+<p><em>第一次遇见阴天遮住你侧脸</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220012680_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220012680_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220012680_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220012680_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000241_82.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000241_82_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000241_82_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000241_82_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000241_82_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000241_82_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>春风吹，阳光照，红领巾，胸前飘</em></p>
+<p><em>喵咪咪喵咪咪喵咪咪，一个尾巴细又长</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7200000318_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7200000318_0_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7200000318_0_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7200000318_0_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000271_22.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000271_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000271_22_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000271_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000271_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000271_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>甩裙摆画著圆圈，花美得兴高采烈，那香味有点阴险</em></p>
+<p><em>我是个小小交通警，漂亮的制服穿在身</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220001055_29.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220001055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220001055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220001055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000301_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000301_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000301_1_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000301_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000301_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000301_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>每一个岔路口 沿着路标 寻找着自由</em></p>
+<p><em>我唱着妈妈唱着的歌谣</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220012901_10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220012901_10_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220012901_10_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220012901_10_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000331_12.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000331_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000331_12_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000331_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000331_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000331_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>你是谁，为了谁，我的兄弟姐妹不流泪</em></p>
+<p><em>在乡间的小路上</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7200000509_32.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7200000509_32_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7200000509_32_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7200000509_32_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000361_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000361_6_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000361_6_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000361_6_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000361_6_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000361_6_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>二朵玫瑰， 每一朵都像你那样美，你的美</em></p>
+<p><em>若那一刻重来我不哭</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220001245_72.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220001245_72_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220001245_72_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220001245_72_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000392_39.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000392_39_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000392_39_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000392_39_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000392_39_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000392_39_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>不怕晚餐孤单的滋味，只是难免会</em></p>
+<p><em>但你不肯觉醒</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220012962_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220012962_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220012962_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220012962_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000422_25.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000422_25_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000422_25_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000422_25_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000422_25_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000422_25_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>因为爱情总是难舍难分，何必在意那一点点温存，要知道伤心总是难免的</em></p>
+<p><em>春蚕到死</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7200000579_17.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7200000579_17_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7200000579_17_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7200000579_17_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000455_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000455_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000455_2_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000455_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000455_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000455_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>到底怎么了，我快被打败爱你的路，不完全合拍</em></p>
+<p><em>长在哨所旁</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220012245_107.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220012245_107_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220012245_107_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220012245_107_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000516_8.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000516_8_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000516_8_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000516_8_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000516_8_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000516_8_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>以为把这一座城市抛开 就可以终结伤害 却不明白</em></p>
+<p><em>从来我就不曾后悔</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220013055_29.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220013055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220013055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220013055_29_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000546_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000546_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000546_2_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000546_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000546_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000546_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>有什么熬不过，大不了唱首歌</em></p>
+<p><em>让疾风吹呀吹，尽管给我俩考验</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7210000666_99.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7210000666_99_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7210000666_99_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7210000666_99_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000577_26.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000577_26_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000577_26_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000577_26_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000577_26_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000577_26_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-
-<p><em>不知情，不责怪，热闹散场，躲回安静的床</em></p>
+<p><em>可是我现在只想把你手儿牵</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">hifi-wavegan</th>
-<th style="text-align: center">hifigan</th>
-<th style="text-align: center">Parallel WaveGAN</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/wave_tgt/7220012306_25.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/our/7220012306_25_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/hifigan/7220012306_25_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/hifi-wavegan/pwg/7220012306_25_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000611_5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000611_5_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000611_5_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000611_5_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000611_5_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000611_5_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>难免有不能控制的宣泄</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7210000674_10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7210000674_10_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7210000674_10_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7210000674_10_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7210000674_10_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7210000674_10_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>一起郊游，今天别想太多</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7210000706_51.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7210000706_51_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7210000706_51_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7210000706_51_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7210000706_51_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7210000706_51_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>哀愁，我们下手拉大手</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7210000706_91.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7210000706_91_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7210000706_91_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7210000706_91_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7210000706_91_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7210000706_91_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>为什么舍不得熄灭</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7210000769_22.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7210000769_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7210000769_22_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7210000769_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7210000769_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7210000769_22_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>信仰有时尽</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7210000801_30.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7210000801_30_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7210000801_30_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7210000801_30_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7210000801_30_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7210000801_30_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>有时在相同的地方</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220000864_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220000864_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220000864_0_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220000864_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220000864_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220000864_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>一个人游荡</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220000864_7.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220000864_7_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220000864_7_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220000864_7_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220000864_7_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220000864_7_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>压抑着自己心跳</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220000924_61.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220000924_61_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220000924_61_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220000924_61_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220000924_61_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220000924_61_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>该说的都说了</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220000954_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220000954_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220000954_1_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220000954_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220000954_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220000954_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>谈及关于你的话题</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220000984_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220000984_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220000984_0_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220000984_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220000984_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220000984_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>亲手将他放走，无牵的手</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220001014_12.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220001014_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220001014_12_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220001014_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220001014_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220001014_12_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>寻马碲铁还要敲多少吉他，才能买得到 </em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220001044_16.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220001044_16_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220001044_16_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220001044_16_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220001044_16_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220001044_16_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>轻刷着和弦，情人节卡片</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220001074_18.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220001074_18_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220001074_18_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220001074_18_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220001074_18_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220001074_18_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>至少让我不和谁牵扯</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Xiaoice2</th>
+<th style="text-align: center">Xiaoice1(world)</th>
+<th style="text-align: center">Xiaoice1(mel)</th>
+<th style="text-align: center">+ConvFFT</th>
+<th style="text-align: center">++SD</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7220001104_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7220001104_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7220001104_2_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7220001104_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7220001104_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7220001104_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
 <!-- *When brought to trial he hardly realized his position*
