@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.66.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="../css/normalize.css">
+<link rel="stylesheet" href="../css/skeleton.css">
+<link rel="stylesheet" href="../css/custom.css">
+<link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<title>ReActSpeech: Learning to Auto-correcting for High-quality Spectrograms</title>
+</head>
+<body>
+
+<div class="container">
+
+	<header role="banner">
+		
+			
+		
+		
+	</header>
+
+
+	<main role="main">
+		<article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 class="entry-title" itemprop="headline">ReActSpeech: Learning to Auto-correcting for High-quality Spectrograms</h1>
+			
+			<section itemprop="entry-text">
+				<br>
+<!-- <p>ArXiv: <a href="https://arxiv.org/abs/2210.12740">arXiv:2210.12740</a></p> -->
+<h2 id="authors">Authors</h2>
+<ul>
+<li>Zhiyang Zhou* (Xiaobing.ai) <a href="mailto:zhouzhiyang@xiaobing.ai">zhouzhiyang@xiaobing.ai</a></li>
+<li>Shihui Liu (Xiaobing.ai) <a href="mailto:liushihui@xiaobing.ai">liushihui@xiaobing.ai</a></li>
+</ul>
+<!-- <p><small>* Equal contribution.</small></p> -->
+<h2 id="abstract">Abstract</h2>
+<p>Non-autoregressive text-to-speech (TTS) has achieved impressive inference speedup but at the cost of inferior voice quality. 
+  The fundamental reason lies in the gap between the complexity of data distributions and the capability of modeling methods. 
+  Previous works utilize either simplifying data distributions or enhancing modeling methods to alleviate the problem. 
+  In this work, we propose a new architecture ReActSpeech to explicitly learn to ”auto-correcting” for high-quality spectrograms. 
+  Specifically, ReActSpeech utilizes a redistribution module to improve (correct) extracted alignments automatically, and 
+  an iterative decoder called revisor to refine (correct) spectrograms iteratively. Extensive experiments conducted on several benchmarks 
+  show that ReActSpeech can greatly alleviate the above problem and achieve a nice tradeoff between training time, inference speed, and output quality.</p>
+<!-- <h2 id="model-architecture">Model Architecture</h2>
+  <img src="../images/reactspeech/model-architecture.png" width="100%"/> -->
+<h2 id="audio-samples">Audio Samples</h2>
+<p>All of the waveform use same vocoder model.</p>
+<h3 id="audio-quality">Audio Quality</h3>
+<p><em>所以呢她整个人现在应该说是~，嗯~，非常的孤独。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">RAW</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000016_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000016_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000016_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000016_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>其实能够~，嗯~，给当下~的人们一些，人性上的拷问吧。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000022_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000022_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000022_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000022_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>后来我爸跟我说呢他觉得，嗯像这样~，一下子变深的水域，就可能有像鲨鱼啊等等就是，体型~比较~，庞大的食肉鱼出现。</em></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000043_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000043_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000043_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000043_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>嗯~结果没有想到，嗯~它是一只公猫嘛，后来给它做了绝育之后呢~，嗯~它食欲又大增，然后又给它~各种吃~，各种补~，现在呢已经完全不是一只豆芽儿了。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000076_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000076_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000076_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000076_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+<p><em>它就会追着这个电视屏幕，一直跑~，一直抓，还是~挺有意思的。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000083_3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000083_3_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000083_3_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000083_3_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>不是很正规的猫舍买的，所以呢才，几千块钱。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000093_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000093_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000093_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000093_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>然后，嗯~，大概~，五片呢也不过就是，一百，七八十块钱~，我觉得还是可以接受的一个价位。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000121_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000121_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000121_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000121_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>然后有一些呢，嗯~，包括~，基础设施啊什么的，都比较古老。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000158_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000158_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000158_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000158_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>所以呢，就可能一直到我们~高考~，结束，它都没有，鞥~就是它都没有空调~，所以呢在里面读书的同学呢，也是比较惨。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000159_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000159_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000159_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000159_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>呃~当时呢跟着一位，非常非常严厉的数学班主任。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000160_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000160_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000160_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000160_1_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>嗯~然后~，鞥~说到初中的班主任呢~，呃~其实呢我在很多很多年后，跟我的一些，初中同学呀~，还有初中的好朋友，鞥~回首这一段历史的时候，都觉得有一点点不堪回首，就是因为她的管理方式，太不人性化了。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000165_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000165_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000165_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000165_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>嗯~早上没有交上作业的话，那下午呢就要去教室的最后面罚站，一罚站呢就是一下午。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000166_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000166_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000166_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000166_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>嗯~另外一个呢是综艺节目播音主持，这个呢是可以，呃就是根据自己~的情况，然后进行挑选的。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000212_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000212_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000212_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000212_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>我觉得可能以后，自己动手的机会呢就会越来越少。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000240_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000240_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000240_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000240_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>嗯~但是在日本的话呢，他们那些小吃，又很精致很漂亮，而且~确实味道很好。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000290_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000290_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000290_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000290_2_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+<p><em>哦~，我没看过，但是我听大家的评价~好像都还不错。</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">GTMEL</th>
+<th style="text-align: center">ReActSpeech (v1)</th>
+<th style="text-align: center">ReActSpeech (v4)</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/RAW/3101000393_0.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/GTMEL/3101000393_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v1)/3101000393_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/reactspeech/ReActSpeech (v4)/3101000393_0_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+</div>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139981676-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+         HTML: ["input/TeX","output/HTML-CSS"],
+         TeX: {
+                Macros: {
+                         bm: ["\\boldsymbol{#1}", 1],
+                         argmax: ["\\mathop{\\rm arg\\,max}\\limits"],
+                         argmin: ["\\mathop{\\rm arg\\,min}\\limits"]},
+                extensions: ["AMSmath.js","AMSsymbols.js"],
+                equationNumbers: { autoNumber: "AMS" } },
+         extensions: ["tex2jax.js"],
+         jax: ["input/TeX","output/HTML-CSS"],
+         tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true },
+         "HTML-CSS": { availableFonts: ["TeX"],
+                       linebreaks: { automatic: true } }
+     });
+ </script>
+
+ <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+       }
+     });
+ </script>
+
+ <script type="text/javascript" async
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+ </script>
+
+
+
+
+</body>
+</html>
+
