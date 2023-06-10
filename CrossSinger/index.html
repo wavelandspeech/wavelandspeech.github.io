@@ -66,10 +66,9 @@ on our internal 48kHz singing voice datasets shows that XiaoiceSing2 significant
     <img src="../images/xiaoicesing2/multi_band_discriminator.png" width="100%" /> -->
 <h2 id="audio-samples">Audio Samples</h2>
 <p>All of the spectrogram use same vocoder .</p>
-<h3 id="audio-quality">Audio Quality</h3>
 <h4 id="audio-quality">Code Switch</h4>
 <p><em>原来你是这种 bad boy</em></p>
-<h5 id="audio-quality">Chinese Singer</h5>
+<p><em>Chinese Singer</em></p>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
@@ -80,31 +79,45 @@ on our internal 48kHz singing voice datasets shows that XiaoiceSing2 significant
 </tr></thead><tbody>
 <tr>
 <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/gt/" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000150_169_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_epoch104_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_epoch104_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_epoch104_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_rmconv_epoch104_1_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 </tr>
 </tbody></table>
-<p><em>滴滴答，我早茶月光洒在你头发，平行的画滴滴</em></p>
+<p><em>English Singer</em></p>
 <table><thead>
-<tr>
-<th style="text-align: center">GT</th>
-<th style="text-align: center">Xiaoice2</th>
-<th style="text-align: center">Xiaoice1(WORLD)</th>
-<th style="text-align: center">Xiaoice1(HiFi-WaveGAN)</th>
-<th style="text-align: center">+ConvFFT</th>
-<th style="text-align: center">++SD</th>
-</tr></thead><tbody>
-<tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000180_63.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000180_63_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_s/7200000180_63_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-</tr>
+  <tr>
+    <th style="text-align: center">GT</th>
+    <th style="text-align: center">CrossSinger</th>
+    <th style="text-align: center">-reversal gradient layer</th>
+    <th style="text-align: center">--conditional layer norm</th>
+    <th style="text-align: center">--- residual conv1d block</th>
+    </tr></thead><tbody>
+    <tr>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/gt/" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_epoch104_7_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_epoch104_7_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_epoch104_7_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_rmconv_epoch104_7_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
+</tbody></table>
+<p><em>Japanese Singer</em></p>
+<table><thead>
+  <tr>
+    <th style="text-align: center">GT</th>
+    <th style="text-align: center">CrossSinger</th>
+    <th style="text-align: center">-reversal gradient layer</th>
+    <th style="text-align: center">--conditional layer norm</th>
+    <th style="text-align: center">--- residual conv1d block</th>
+    </tr></thead><tbody>
+    <tr>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/gt/" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_epoch104_14_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_epoch104_14_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_epoch104_14_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/code_switch/ours/1_0_0_cln_ffd_1_classifier_gan_jp_1_rmgrl_rmcln_rmconv_epoch104_14_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
 </tbody></table>
 <p><em>曾经将征服全世界，到最后回首才发现</em></p>
 <table><thead>
