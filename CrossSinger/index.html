@@ -27,7 +27,7 @@
 
 	<main role="main">
 		<article itemscope itemtype="https://schema.org/BlogPosting">
-            <h1 class="entry-title" itemprop="headline">XiaoiceSing 2: A High-Fidelity Singing Voice Synthesizer Based on Generative Adversarial Network</h1>
+            <h1 class="entry-title" itemprop="headline">CrossSinger: A Cross-Lingual Multi-Singer High-Fidelity Singing Voice Synthesizer Trained on Monolingual Singers</h1>
 			
 			<section itemprop="entry-text">
 				<br>
@@ -67,18 +67,19 @@ on our internal 48kHz singing voice datasets shows that XiaoiceSing2 significant
 <h2 id="audio-samples">Audio Samples</h2>
 <p>All of the spectrogram use same vocoder .</p>
 <h3 id="audio-quality">Audio Quality</h3>
-<p><em>明天你好，含着泪微笑，越美好</em></p>
+<h4 id="audio-quality">Code Switch</h4>
+<p><em>原来你是这种 bad boy</em></p>
+<h5 id="audio-quality">Chinese Singer</h5>
 <table><thead>
 <tr>
 <th style="text-align: center">GT</th>
-<th style="text-align: center">Xiaoice2</th>
-<th style="text-align: center">Xiaoice1(WORLD)</th>
-<th style="text-align: center">Xiaoice1(HiFi-WaveGAN)</th>
-<th style="text-align: center">+ConvFFT</th>
-<th style="text-align: center">++SD</th>
+<th style="text-align: center">CrossSinger</th>
+<th style="text-align: center">-reversal gradient layer</th>
+<th style="text-align: center">--conditional layer norm</th>
+<th style="text-align: center">--- residual conv1d block</th>
 </tr></thead><tbody>
 <tr>
-<td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_wave/7200000150_169.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/CrossSinger/gt/" autoplay/>Your browser does not support the audio element.</audio></td>
 <td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_gl_now/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 <td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_2.1_our_gan/7200000150_169_1009_f11_m_oriMgc.wav" autoplay/>Your browser does not support the audio element.</audio></td>
 <td style="text-align: center"><audio controls="controls" ><source src="../audio/xiaoice2/model_raw/7200000150_169_gen.wav" autoplay/>Your browser does not support the audio element.</audio></td>
