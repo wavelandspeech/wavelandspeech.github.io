@@ -41,23 +41,15 @@
 <p><small>* Equal contribution.</small></p>
 -->
 <h2 id="abstract">Abstract</h2>
-<p>It is challenging to build a multi-singer high-fidelity singing voice synthesis system with cross-lingual ability 
-  by only using monolingual singers in the training stage. In this paper, we propose CrossSinger, which is 
-  a cross-lingual singing voice synthesizer based on Xiaoicesing2. Specifically, we first use International Phonetic Alphabet (IPA) 
-  to denote all languages in our training data to make the phonetic representation consistent. Additionally, gradient reversal layer (GRL) 
-  is utilized to remove singer biases included in lyrics since all singers are monolingual, which indicates singer's identity is 
-  implicitly associated with the text. Moreover, we leverage conditional layer normalization to incorporate the language information 
-  for better pronunciation of unseen languages. The experiment is conducted on a combination of three singing voice datasets containing 
-  Japanese Kiritan dataset, English NUS-48E dataset and one internal Chinese dataset. The result shows CrossSinger can synthesize 
-  high-fidelity songs with cross-lingual ability for various singers.</p>
+<p>It is challenging to build a multi-singer high-fidelity singing voice synthesis system with cross-lingual ability by only using monolingual singers in the training stage. In this paper, we propose CrossSinger, which is a cross-lingual singing voice synthesizer based on Xiaoicesing2. Specifically, we utilize International Phonetic Alphabet to unify the representation for all languages of the training data. Moreover, we leverage conditional layer normalization to incorporate the language information into the model for better pronunciation when singers meet unseen languages. Additionally, gradient reversal layer (GRL) is utilized to remove singer biases included in lyrics since all singers are monolingual, which indicates singer's identity is implicitly associated with the text. The experiment is conducted on a combination of three singing voice datasets containing Japanese Kiritan dataset, English NUS-48E dataset, and one internal Chinese dataset. The result shows CrossSinger can synthesize high-fidelity songs for various singers with cross-lingual ability, including code-switch cases.</p>
 <h2 id="model-architecture">Model Architecture</h2>
-  <img src="../images/xiaoicesing2/model-architecture.png" width="100%"/>
+  <img src="../images/CrossSinger/model.png" width="100%"/>
   <!-- <h3 id="generator">Generator</h3>
-    <img src="../images/xiaoicesing2/generator.png" width="100%" />
-  <h3 id="ConvFFT">ConvFFT module</h3>
-    <img src="../images/xiaoicesing2/ConvFFT.png" width="100%" />
-  <h3 id="multi_band_discriminator">Multi-band discriminator</h3>
-    <img src="../images/xiaoicesing2/multi_band_discriminator.png" width="100%" /> -->
+    <img src="../images/CrossSinger/conv.png" width="100%" />
+  <h3 id="ConvFFT">CLN-ConvFFT module</h3>
+    <img src="../images/CrossSinger/classifier.png" width="100%" />
+  <h3 id="multi_band_discriminator">speaker classifier</h3> -->
+    
 <h2 id="audio-samples">Audio Samples</h2>
 <p>All of the spectrogram use same vocoder .</p>
 <h4 id="audio-quality">Code Switch</h4>
@@ -1082,19 +1074,26 @@
 </tr>
 </tbody></table> -->
 <h2 id="subjective-eval">Subjective Evaluation</h2>
-<p>The evaluation experiments are conducted on the server with 12 Intel Xeon CPU, 256GB memory and 1 NVIDIA V100 GPU.</p>
+<p>We conducted a comprehensive series of experiments to
+  evaluate the performance of our proposed model, using the
+  average Mean Opinion Score (MOS) as the evaluation metric. The evaluation was conducted from three key aspects:
+  sound quality, pronunciation accuracy, and naturalness. Each
+  sub-experiment involved 20 segments for each language per
+  singer. We recruited a total of 60 listeners, with 20 assigned
+  to each language. The experimental results are presented in Table 1, clearly
+  indicating that CrossSinger significantly outperforms Xiaoicesing2 in terms of cross-lingual ability.</p>
 <table><thead>
 <tr>
 <th style="text-align: center">MOS Test Result</th>
 </tr></thead><tbody>
 <tr>
 <td style="text-align: center">
-<img src="../images/xiaoicesing2/mos_test_result.png" width="100%"/>
+<img src="../images/CrossSinger/subject.png" width="100%"/>
 </td>
 </tr>
 </tbody></table>
 
-<h2 id="mel-spectrogram-analysis">Mel-spectrogram Analysis</h2>
+<!-- <h2 id="mel-spectrogram-analysis">Mel-spectrogram Analysis</h2>
 <p>The dimension of mel-spectrogram is 120.</p>
 <table><thead>
 <tr>
@@ -1105,17 +1104,19 @@
 <img src="../images/xiaoicesing2/mel-spectrogram_analysis.png" width="100%"/>
 </td>
 </tr>
-</tbody></table>
+</tbody></table> -->
 
 <h2 id="ablation-study">Ablation Study</h2>
-<p>The evaluation experiments are conducted on the server with 12 Intel Xeon CPU, 256GB memory and 1 NVIDIA V100 GPU.</p>
+<p>For the ablation study, we individually removed
+  the language conditional layer normalization (CLN) and the
+  singer bias eliminator, as indicated in Table 2.</p>
 <table><thead>
 <tr>
 <th style="text-align: center">Ablation Study</th>
 </tr></thead><tbody>
 <tr>
 <td style="text-align: center">
-<img src="../images/xiaoicesing2/ablation_study.png" width="100%"/>
+<img src="../images/CrossSinger/ablation.png" width="100%"/>
 </td>
 </tr>
 </tbody></table>
