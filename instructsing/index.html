@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.66.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="../css/normalize.css">
+<link rel="stylesheet" href="../css/skeleton.css">
+<link rel="stylesheet" href="../css/custom.css">
+<link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<title>INSTRUCTSING: GENERATIVE ADVERSARIAL NETWORK WITH MULTI-LEVEL SAMPLING RATE AUDIO FOR HIGH-FIDELITY SINGING VOICE GENERATION</title>
+</head>
+<body>
+
+<div class="container">
+
+	<header role="banner">
+		
+			
+		
+		
+	</header>
+
+
+	<main role="main">
+		<article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 class="entry-title" itemprop="headline">INSTRUCTSING: GENERATIVE ADVERSARIAL NETWORK WITH MULTI-LEVEL SAMPLING RATE AUDIO FOR HIGH-FIDELITY SINGING VOICE GENERATION</h1>
+			
+			<section itemprop="entry-text">
+				<br>
+<!--<p>ArXiv: <a href="https://arxiv.org/abs/2210.12740">arXiv:2210.12740</a></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li>Chunhui Wang* (Xiaobing.ai) <a href="mailto:wangchunhui@xiaobing.ai">wangchunhui@xiaobing.ai</a></li>
+<li>Chang Zeng* (Japan SOKENDAI) <a href="mailto:zengchang@nii.ac.jp">zengchang@nii.ac.jp</a></li>
+<li>Xing He (Xiaobing.ai) <a href="mailto:hexing@xiaobing.ai">hexing@xiaobing.ai</a></li>
+</ul>
+<p><small>* Equal contribution.</small></p>
+-->
+<h2 id="abstract">Abstract</h2>
+<p>Training a high-performance neural vocoder is a time-consuming endeavor due to the substantial number of trainable parameters it necessitates. However, the presence of a large number of trainable parameters, in turn, results in a slower network convergence. To accelerate training while preserving the ability to generate high-quality singing voices, we introduce a novel neural vocoder called InstructSing. This vocoder leverages differentiable digital signal processing (DDSP) and a generative adversarial network (GAN) framework. It comprises a generator and two independent discriminators. The generator incorporates an Instruct Module, inspired by DDSP, which produces audio with an 8k sampling rate as an instructive signal. Additionally, it includes a UNet-based Bridge Module responsible for generating essential periodic and aperiodic information, along with a WaveNet-based ReverbNet Module for generating 48kHz high-fidelity singing voices. In terms of discriminators, we amalgamate a multi-period discriminator, as originally proposed in HiFiGAN, with a multi-scale multi-band Short-Time Fourier Transform (STFT) discriminator--an enhanced version of the multi-scale STFT discriminator featured in Encodec. Notably, InstructSing achieves convergence within 10,000 training steps on a 4-GPUs machine, outperforming other neural vocoders in both training speed and voice quality </p>
+<h2 id="model-architecture">Model Architecture</h2>
+  <img src="../images/instructsing/spec.png" width="100%"/>
+<h2 id="audio-samples">Audio Samples</h2>
+<p>All of the spectrogram use same acoustic model.</p>
+<h3 id="audio-quality">Audio Quality</h3>
+<p><em>变色的生活任性的挑拨 疯狂地冒出了头</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/2901000001_49.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/2901000001_49_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/2901000001_49_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/2901000001_49_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/2901000001_49_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+<p><em>风停了也无所谓 只因为你曾说 Everything</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/2901000001_66.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/2901000001_66_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/2901000001_66_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/2901000001_66_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/2901000001_66_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>我们也不为谁掉眼泪</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/2901000016_51.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/2901000016_51_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/2901000016_51_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/2901000016_51_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/2901000016_51_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+<p><em>你有我的蝴蝶</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/2901000082_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/2901000082_13_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/2901000082_13_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/2901000082_13_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/2901000082_13_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>小小的一片云呀 慢慢地走过来 请你们歇歇脚呀</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/37_2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/37_2_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>我们走到分叉路口</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/4100000056_4.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/4100000056_4_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>变成我记忆里的明信片</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/53_85.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/53_85_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+<p><em>原来你也在这里啊爱一个人</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/73_86.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/73_86_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>啊啊哦我为你歌唱</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/9_105.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/9_105_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>拥抱着夜来香 吻着夜来香</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/tgt/9_81.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-400k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-400k/9_81_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-400k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-400k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+<h3 id="audio-quality">Compare different steps</h3>
+
+<p><em>小小的一片云呀 慢慢地走过来 请你们歇歇脚呀</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">InstructSing</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN</th>
+<th style="text-align: center">RefineGAN</th>
+<th style="text-align: center">DDSP</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/37_2_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/37_2_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/37_2_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+
+<p><em>我们走到分叉路口</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">InstructSing-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-50ksteps</th>
+<th style="text-align: center">RefineGAN-10ksteps</th>
+<th style="text-align: center">RefineGAN-50ksteps</th>
+<th style="text-align: center">DDSP-10ksteps</th>
+<th style="text-align: center">DDSP-50ksteps</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/4100000056_4_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/4100000056_4_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/4100000056_4_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>变成我记忆里的明信片</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">InstructSing-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-50ksteps</th>
+<th style="text-align: center">RefineGAN-10ksteps</th>
+<th style="text-align: center">RefineGAN-50ksteps</th>
+<th style="text-align: center">DDSP-10ksteps</th>
+<th style="text-align: center">DDSP-50ksteps</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/53_85_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/53_85_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/53_85_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+</tbody></table>
+
+
+<p><em>原来你也在这里啊爱一个人</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">InstructSing-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-50ksteps</th>
+<th style="text-align: center">RefineGAN-10ksteps</th>
+<th style="text-align: center">RefineGAN-50ksteps</th>
+<th style="text-align: center">DDSP-10ksteps</th>
+<th style="text-align: center">DDSP-50ksteps</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/73_86_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/73_86_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/73_86_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+
+<p><em>啊啊哦我为你歌唱</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">InstructSing-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-50ksteps</th>
+<th style="text-align: center">RefineGAN-10ksteps</th>
+<th style="text-align: center">RefineGAN-50ksteps</th>
+<th style="text-align: center">DDSP-10ksteps</th>
+<th style="text-align: center">DDSP-50ksteps</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/9_105_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/9_105_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/9_105_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table>
+
+
+<p><em>拥抱着夜来香 吻着夜来香</em></p>
+<table><thead>
+<tr>
+<th style="text-align: center">InstructSing-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-10ksteps</th>
+<th style="text-align: center">HN-UnifiedSourceFilterGAN-50ksteps</th>
+<th style="text-align: center">RefineGAN-10ksteps</th>
+<th style="text-align: center">RefineGAN-50ksteps</th>
+<th style="text-align: center">DDSP-10ksteps</th>
+<th style="text-align: center">DDSP-50ksteps</th>
+</tr></thead><tbody>
+<!--2901000001_49.wav  2901000001_66.wav  2901000016_51.wav  2901000082_13.wav  37_2.wav  4100000056_4.wav  53_85.wav  73_86.wav  9_105.wav  9_81.wav \
+2901000001_49 变色的生活任性的挑拨 疯狂地冒出了头
+2901000001_66 风停了也无所谓 只因为你曾说 Everything
+2901000016_51 我们也不为谁掉眼泪
+2901000082_13 你有我的蝴蝶
+37_2 小小的一片云呀 慢慢地走过来 请你们歇歇脚呀
+4100000056_4 我们走到分叉路口
+53_85   变成我记忆里的明信片
+73_86 原来你也在这里啊爱一个人
+9_105 啊啊哦我为你歌唱
+9_81  拥抱着夜来香 吻着夜来香
+-->
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/instructsing-10k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-10k/9_81_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/hn-50k/9_81_f1.00.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-10k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/refinegan-50k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-10k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/instructsing/ddsp-50k/9_81_generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+
+</tr>
+
+</tbody></table>
+<!-- *When brought to trial he hardly realized his position*
+
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Transformer TTS</th>
+<th style="text-align: center">FastSpeech</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/gt_waveglow/3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/at/3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/na/3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table> -->
+<!-- *There were others less successful*
+
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Transformer TTS</th>
+<th style="text-align: center">FastSpeech</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/gt_waveglow/7.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/at/7.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/na/7.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table> -->
+<!-- *The causes of this ascent are not clear*
+
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Transformer TTS</th>
+<th style="text-align: center">FastSpeech</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/gt_waveglow/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/at/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/na/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table> -->
+<!--
+8. *It would be far better to begin at the beginning*
+
+    <table><thead>
+    <tr>
+    <th style="text-align: center">GT</th>
+    <th style="text-align: center">Transformer TTS</th>
+    <th style="text-align: center">FastSpeech</th>
+    </tr></thead><tbody>
+    <tr>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/gt_waveglow/8.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/at/8.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    <td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/na/8.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
+    </tbody></table>
+
+
+10. *The causes of this ascent are not clear*
+
+<table><thead>
+<tr>
+<th style="text-align: center">GT</th>
+<th style="text-align: center">Transformer TTS</th>
+<th style="text-align: center">FastSpeech</th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/gt_waveglow/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/at/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+<td style="text-align: center"><audio controls="controls" ><source src="../audio/fastspeech/audio/na/10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+</tr>
+</tbody></table> -->
+<h2 id="evaluation">Singing Voice Quality Evaluation</h2>
+<p>The evaluation experiments are conducted on the server with 12 Intel Xeon CPU, 256GB memory and 1 NVIDIA V100 GPU.</p>
+<table><thead>
+<tr>
+<th style="text-align: center">Quality Evaluation (objective and subjective) </th>
+</tr></thead><tbody>
+<tr>
+<td style="text-align: center">
+<img src="../images/hifi-wavegan/inference_and_mos.png" width="70%"/>
+</td>
+</tr>
+</tbody></table>
+
+<h2 id="Spectrogram Analysis">Spectrogram Analysis</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Spectrogram Contrastive Analysis of PWG and HiFi-WaveGAN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">
+        <img src="../images/hifi-wavegan/pwg_spec_wave.png" width="100%"/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">
+        <img src="../images/hifi-wavegan/hwg_spec_wave.png" width="100%"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ablation study">Ablation Study</h2>
+<table><thead>
+  <tr>
+  <th style="text-align: center">Ablation Study</th>
+  </tr></thead><tbody>
+  <tr>
+  <td style="text-align: center">
+  <img src="../images/hifi-wavegan/ablation.png" width="70%"/>
+  </td>
+  </tr>
+  </tbody></table>
+<!-- ## Model Hyperparameters
+
+\ | Transformer TTS   |  Our Model
+--------|------|------
+ Hidden Size | 384 | 384
+ Conv1D Kernel | 3 | 3
+ Conv1D Filter Size | 384 | 384
+ \#Encoder/Phoneme-Side FFT Layer | 4 | 4 
+ \#Decoder/Mel-Side FFT Layers | 4 | 4
+ FFT Block Dropout | 0.1 | 0.1
+ Total Number  | 26.3M  |  24.2M 
+
+ -->
+
+</div>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139981676-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+         HTML: ["input/TeX","output/HTML-CSS"],
+         TeX: {
+                Macros: {
+                         bm: ["\\boldsymbol{#1}", 1],
+                         argmax: ["\\mathop{\\rm arg\\,max}\\limits"],
+                         argmin: ["\\mathop{\\rm arg\\,min}\\limits"]},
+                extensions: ["AMSmath.js","AMSsymbols.js"],
+                equationNumbers: { autoNumber: "AMS" } },
+         extensions: ["tex2jax.js"],
+         jax: ["input/TeX","output/HTML-CSS"],
+         tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true },
+         "HTML-CSS": { availableFonts: ["TeX"],
+                       linebreaks: { automatic: true } }
+     });
+ </script>
+
+ <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+       }
+     });
+ </script>
+
+ <script type="text/javascript" async
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+ </script>
+
+
+
+
+</body>
+</html>
+
