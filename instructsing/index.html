@@ -660,16 +660,27 @@
 <p>The evaluation experiments are conducted on the server with 12 Intel Xeon CPU, 256GB memory and 1 NVIDIA V100 GPU.</p>
 <table><thead>
 <tr>
-<th style="text-align: center">Quality Evaluation (objective and subjective) </th>
+<th style="text-align: center">Quality evaluation at different training steps (objective and subjective) </th>
 </tr></thead><tbody>
 <tr>
 <td style="text-align: center">
-<img src="../images/hifi-wavegan/inference_and_mos.png" width="70%"/>
+<img src="../images/instructsing/main_exp.png" width="70%"/>
 </td>
 </tr>
 </tbody></table>
 
-<h2 id="Spectrogram Analysis">Spectrogram Analysis</h2>
+<table><thead>
+  <tr>
+  <th style="text-align: center">Relative improvement at different steps compared with the score at 10k step </th>
+  </tr></thead><tbody>
+  <tr>
+  <td style="text-align: center">
+  <img src="../images/instructsing/relative_improvement.png" width="70%"/>
+  </td>
+  </tr>
+  </tbody></table>
+
+<!-- <h2 id="Spectrogram Analysis">Spectrogram Analysis</h2>
 <table>
   <thead>
     <tr>
@@ -688,7 +699,7 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <h2 id="ablation study">Ablation Study</h2>
 <table><thead>
@@ -697,7 +708,7 @@
   </tr></thead><tbody>
   <tr>
   <td style="text-align: center">
-  <img src="../images/hifi-wavegan/ablation.png" width="70%"/>
+  <img src="../images/instructsing/ablation_study.png" width="70%"/>
   </td>
   </tr>
   </tbody></table>
